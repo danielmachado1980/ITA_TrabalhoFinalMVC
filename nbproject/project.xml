@@ -11,15 +11,15 @@
                     <path-in-war>WEB-INF/classes</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.postgresql-9.4.1211.jar}</file>
+                    <file>${file.reference.dbunit-2.4.9.jar-1}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.dbunit-2.4.9.jar}</file>
+                    <file>${file.reference.postgresql-9.4.1211.jar-1}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.slf4j-api-1.7.21.jar}</file>
+                    <file>${file.reference.slf4j-api-1.7.21.jar-1}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>

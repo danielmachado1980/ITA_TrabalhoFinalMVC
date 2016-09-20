@@ -34,6 +34,8 @@ public class NovoServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //response.setContentType("text/html;charset=UTF-8");
+        UsuarioDAOImpl dao = new UsuarioDAOImpl();
+        dao.adicionarPontos("duda", 15);
         request.getRequestDispatcher("/WEB-INF/view/novojsp.jsp").forward(request, response);
     }
 
