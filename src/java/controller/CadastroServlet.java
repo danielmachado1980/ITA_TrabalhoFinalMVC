@@ -12,6 +12,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Usuario;
+import model.UsuarioDAOImpl;
 
 /**
  *
@@ -20,43 +22,30 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = {"/Cadastrar"})
 public class CadastroServlet extends HttpServlet {
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("cadastroUsuario.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/view/cadastroUsuario.jsp").forward(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
+        Usuario usuario = new Usuario();
+        
+        String nome = request.getParameter("nome");
+        String senha = request.getParameter("senha");
+        String login = request.getParameter("login");
+        String email = request.getParameter("email");
+        usuario.setEmail(email);
+        usuario.setLogin(login);
+        usuario.setNome(nome);
+        usuario.setSenha(senha);
+        
+        UsuarioDAOImpl usuarioDAO = new UsuarioDAOImpl();
+        usuarioDAO.inserir(usuario);
+        response.sendRedirect(request.getContextPath() + "/");
+        //response.sendRedirect(request.getContextPath() + "/Topicos");
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

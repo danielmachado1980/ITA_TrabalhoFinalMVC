@@ -1,6 +1,6 @@
 <%-- 
-    Document   : cadastroUsuario
-    Created on : 20/09/2016, 15:21:54
+    Document   : topicos
+    Created on : 20/09/2016, 15:23:13
     Author     : Daniel
 --%>
 
@@ -8,10 +8,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Tela Cadastro</title>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+        <title>Tela Tópicos</title>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
     </head>
     <body>
         <h1>Hello World!</h1>

@@ -12,18 +12,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Usuario;
+import model.UsuarioDAOImpl;
 
 /**
  *
- * @author Daniel
+ * @author daniel
  */
-@WebServlet(urlPatterns = {"/Login"})
-public class LoginServlet extends HttpServlet {
+@WebServlet(urlPatterns = {""})
+public class IndexServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //request.getRequestDispatcher("/WEB-INF/view/topicos.jsp").forward(request, response);
-        response.sendRedirect(request.getContextPath() + "/Topicos");
+        request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
     }
+
 }
