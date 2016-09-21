@@ -12,32 +12,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Usuario;
-import model.UsuarioDAOImpl;
 
 /**
  *
- * @author daniel
+ * @author Daniel
  */
-@WebServlet(name = "NovoServlet", urlPatterns = {"/NovoServlet"})
-public class NovoServlet extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        //response.setContentType("text/html;charset=UTF-8");
-        UsuarioDAOImpl dao = new UsuarioDAOImpl();
-        dao.adicionarPontos("duda", 15);
-        request.getRequestDispatcher("/WEB-INF/view/novojsp.jsp").forward(request, response);
-    }
+@WebServlet(urlPatterns = {"/Cadastrar"})
+public class CadastroServlet extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -51,9 +32,7 @@ public class NovoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-        
-        System.out.println("controller.NovoServlet.doGet()");
+        request.getRequestDispatcher("cadastroUsuario.jsp").forward(request, response);
     }
 
     /**
@@ -67,7 +46,7 @@ public class NovoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
     }
 
     /**
