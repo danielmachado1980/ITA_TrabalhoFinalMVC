@@ -10,46 +10,63 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Tela Cadastro</title>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
     </head>
     <body>
         <div class="container">
-            <div class="col-md-8 col-md-offset-4">
-                <h2>Cadastro de Usuário</h2>
+            <!-- Forms
+            ================================================== -->
+            <div class="bs-docs-section">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-header">
+                            <h1 id="forms">Cadastro de Usuário</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="well bs-component">
+                            <form class="form-horizontal" action="Cadastrar" method="POST">
+                                <fieldset>
+                                    <legend></legend>
+                                    <div class="form-group">
+                                        <label for="inputNome" class="col-lg-2 control-label">Nome</label>
+                                        <div class="col-lg-10">
+                                            <input type="text" class="form-control" name="nome" placeholder="Insira o Nome" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                                        <div class="col-lg-10">
+                                            <input type="email" class="form-control" name="email" placeholder="Insira o Email" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputLogin" class="col-lg-2 control-label">Login</label>
+                                        <div class="col-lg-10">
+                                            <input type="text" class="form-control" name="login" placeholder="Insira o Login" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword" class="col-lg-2 control-label">Senha</label>
+                                        <div class="col-lg-10">
+                                            <input type="password" class="form-control" name="senha" placeholder="Insira a Senha" required>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-lg-10 col-lg-offset-2">
+                                            <a href="${pageContext.request.contextPath}" class="btn btn-default" role="button">Cancelar</a>
+                                            <button type="submit" class="btn btn-primary">Enviar</button>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            <form class="form-horizontal" action="Cadastrar" method="POST">
-                <div class="form-group">
-                    <label class="control-label col-sm-4" for="nome">Nome:</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" name="nome" placeholder="Entre com o nome" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-4" for="email">Email:</label>
-                    <div class="col-sm-6">
-                        <input type="email" class="form-control" name="email" placeholder="Entre com o email" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-4" for="email">Login:</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" name="login" placeholder="Entre com o login" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-4" for="pwd">Senha:</label>
-                    <div class="col-sm-6">
-                        <input type="password" class="form-control" name="senha" placeholder="Entre com a senha" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-7 col-md-offset-5">
-                        <a href="${pageContext.request.contextPath}" class="btn btn-default" role="button">Cancelar</a>
-                        <button type="submit" class="btn btn-primary">Cadastrar</button>
-                    </div>
-                </div>
-            </form>
-        </div>
     </body>
 </html>

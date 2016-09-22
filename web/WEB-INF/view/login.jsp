@@ -1,35 +1,34 @@
 <!DOCTYPE html>
 <html >
     <head>
-        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Tela Login</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
     </head>
     <body>
-        <form action="Login" method="POST">
-        <div id="wrap">
-            <div id="regbar">
-                <div id="navthing">
-                    <h2><a href="" id="loginform">Login</a> | <a href="Cadastrar">Cadastrar</a></h2>
-                    <div class="login">
-                        <div class="arrow-up"></div>
-                        <div class="formholder">
-                            <div class="randompad">
-                                <fieldset>
-                                    <label>Login</label>
-                                    <input type="login" name="login" required/>
-                                    <label>Senha</label>
-                                    <input type="password" name="senha" required/>
-                                    <input type="submit" value="Login" />
-                                </fieldset>
-                            </div>
-                        </div>
-                    </div>
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="${pageContext.request.contextPath}" class="navbar-brand">Fórum com Gamification</a>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar-main">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="Cadastrar">Cadastrar Usuário</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-        </form>
-        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-        <script src="js/index.js"></script>
-    </body>
+        <div class="container">
+
+            <form class="form-signin" action="Login" method="POST">
+                <h2 class="form-signin-heading">Autenticação</h2>
+                <label for="inputLogin" class="sr-only">Login</label>
+                <input type="text" id="inputLogin" name="login" class="form-control" placeholder="Entre com o login" required autofocus>
+                <label for="inputPassword" class="sr-only">Senha</label>
+                <input type="password" id="inputPassword" name="senha" class="form-control" placeholder="Entre com a senha" required>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Enviar</button>
+            </form>
+
+        </div> <!-- /container -->
 </html>

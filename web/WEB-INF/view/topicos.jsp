@@ -8,11 +8,35 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Tela Tópicos</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="${pageContext.request.contextPath}" class="navbar-brand">Fórum com Gamification</a>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar-main">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="Ranking">Ranking</a></li>
+                        <li><a href="Inserir">Inserir Tópico</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+
+            <div class="bs-docs-section">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-header">
+                            <h1 id="forms">Tópicos</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
