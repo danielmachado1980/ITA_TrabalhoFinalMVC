@@ -10,8 +10,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Tela Exibe Tópico</title>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
+        
     </head>
     <body>
         <h1>Hello World!</h1>
+        <!-- jQuery (necessario para os plugins Javascript do Bootstrap) -->
+        <script src="${pageContext.request.contextPath}/js/jquery-3.1.0.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     </body>
 </html>
