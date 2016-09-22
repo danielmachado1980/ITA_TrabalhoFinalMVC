@@ -17,5 +17,8 @@
         <!-- jQuery (necessario para os plugins Javascript do Bootstrap) -->
         <script src="${pageContext.request.contextPath}/js/jquery-3.1.0.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <h1>Hello World!</h1>
     </body>
 </html>
