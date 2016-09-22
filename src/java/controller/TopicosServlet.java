@@ -17,7 +17,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Daniel
  */
-@WebServlet(urlPatterns = {"/Topicos"})
+@WebServlet(urlPatterns = {"/Topicos",
+                           "/Topicos/Inserir",
+                           "/Topicos/Exibir"})
 public class TopicosServlet extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -32,8 +34,13 @@ public class TopicosServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        request.getRequestDispatcher("/WEB-INF/view/topicos.jsp").forward(request, response);
+        String userPath = request.getServletPath();
+        if(userPath.contains("Inserir")){
+            request.getRequestDispatcher("/WEB-INF/view/insereTopico.jsp").forward(request, response);
+        }else if(userPath.contains("Exibir")){
+            request.getRequestDispatcher("/WEB-INF/view/exibeTopico.jsp").forward(request, response);
+        }else
+            request.getRequestDispatcher("/WEB-INF/view/topicos.jsp").forward(request, response);
     }
 
     /**
@@ -47,7 +54,13 @@ public class TopicosServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
+        String userPath = request.getServletPath();
+        if(userPath.contains("Inserir")){
+            request.getRequestDispatcher("/WEB-INF/view/insereTopico.jsp").forward(request, response);
+        }else if(userPath.contains("Exibir")){
+            request.getRequestDispatcher("/WEB-INF/view/exibeTopico.jsp").forward(request, response);
+        }else
+            request.getRequestDispatcher("/WEB-INF/view/topicos.jsp").forward(request, response);
     }
 
 }
