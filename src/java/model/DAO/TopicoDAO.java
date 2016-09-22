@@ -6,7 +6,10 @@
 package model.DAO;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import model.Topico;
 import model.Usuario;
 
@@ -28,5 +31,30 @@ public class TopicoDAO extends BaseDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+        
+        public List<Topico> listar(String login) {
+		String sql = "SELECT * FROM topico WHERE login = ?";
+                List<Topico> lstTopicos = new ArrayList<>();
+		try {
+			PreparedStatement stm = connection.prepareStatement(sql);
+			stm.setString(1, login);
+			ResultSet rs = stm.executeQuery();
+			while(rs.next()){
+				Topico topico = new Topico();
+                                UsuarioDAOImpl dao = new UsuarioDAOImpl();
+                                topico.setCodigo(rs.getInt("id_topico"));
+				topico.setLogin(rs.getString("login"));
+				topico.setTitulo(rs.getString("titulo"));
+                                topico.setConteudo(rs.getString("conteudo"));
+                                topico.setUsuario(dao.recuperar(topico.getLogin()));
+				lstTopicos.add(topico);
+			}
+			stm.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+                return lstTopicos;
 	}
 }

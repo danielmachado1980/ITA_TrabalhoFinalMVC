@@ -39,8 +39,8 @@ public class UsuarioDAOImpl extends BaseDAO implements UsuarioDAO {
 
 	@Override
 	public Usuario recuperar(String login) {
-		String sql = "SELECT * FROM usuario WHERE login = ?";
-		Usuario usuario = new Usuario();
+                Usuario usuario = new Usuario();
+                String sql = "SELECT * FROM usuario WHERE login = ?";
 		try {
 			PreparedStatement stm = connection.prepareStatement(sql);
 			stm.setString(1, login);
@@ -75,8 +75,8 @@ public class UsuarioDAOImpl extends BaseDAO implements UsuarioDAO {
 	@Override
 	public List<Usuario> ranking() {
 		List<Usuario> lstUsuarios = new ArrayList<>();
+                String sql = "SELECT rank() over (order by pontos desc) as colocacao, u.* FROM usuario u ORDER BY pontos DESC";
 		try {
-			String sql = "SELECT * FROM usuario ORDER BY pontos DESC";
 			PreparedStatement stm = connection.prepareStatement(sql);
 			ResultSet rs = stm.executeQuery();
 			while(rs.next()){
@@ -86,6 +86,7 @@ public class UsuarioDAOImpl extends BaseDAO implements UsuarioDAO {
 				usuario.setEmail(rs.getString("email"));
 				usuario.setSenha(rs.getString("senha"));
 				usuario.setPontos(rs.getInt("pontos"));
+                                usuario.setColocacao(rs.getInt("colocacao"));
 				lstUsuarios.add(usuario);
 			}
 		} catch (SQLException e) {

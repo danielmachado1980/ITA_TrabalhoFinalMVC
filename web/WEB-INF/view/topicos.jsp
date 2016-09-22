@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,7 +28,6 @@
             </div>
         </div>
         <div class="container">
-
             <div class="bs-docs-section">
                 <div class="row">
                     <div class="col-lg-12">
@@ -36,6 +36,27 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="bs-component">
+                <table class="table table-striped table-hover ">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Título</th>
+                            <th>Usuário</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="topico" items="${topicos}">
+                            <tr> 
+                                <td>${topico.getCodigo()}</td>
+                                <td>${topico.getTitulo()}</td>
+                                <td>${topico.getUsuario().getNome()}</td>
+                            </tr>
+                        </c:forEach>
+
+                    </tbody>
+                </table> 
             </div>
         </div>
         <!-- jQuery (necessario para os plugins Javascript do Bootstrap) -->
