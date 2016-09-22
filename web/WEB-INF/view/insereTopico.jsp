@@ -27,7 +27,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="well bs-component">
-                            <form class="form-horizontal" action="InserirTopico" method="POST">
+                            <form class="form-horizontal" method="POST">
                                 <fieldset>
                                     <legend></legend>
                                     <div class="form-group">
@@ -44,7 +44,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-lg-10 col-lg-offset-2">
-                                            <a href="${pageContext.request.contextPath}" class="btn btn-default" role="button">Cancelar</a>
+                                            <a href="${pageContext.request.contextPath}/Topicos" class="btn btn-default" role="button">Cancelar</a>
                                             <button type="submit" class="btn btn-primary">Enviar</button>
                                         </div>
                                     </div>
