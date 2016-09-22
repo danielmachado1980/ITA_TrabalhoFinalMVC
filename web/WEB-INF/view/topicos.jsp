@@ -1,0 +1,42 @@
+<%-- 
+    Document   : topicos
+    Created on : 20/09/2016, 15:23:13
+    Author     : Daniel
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Tela Tópicos</title>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
+    </head>
+    <body>
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="${pageContext.request.contextPath}" class="navbar-brand">Fórum com Gamification</a>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar-main">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="Ranking">Ranking</a></li>
+                        <li><a href="Inserir">Inserir Tópico</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+
+            <div class="bs-docs-section">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-header">
+                            <h1 id="forms">Tópicos</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
