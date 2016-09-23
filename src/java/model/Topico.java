@@ -5,6 +5,9 @@
  */
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author daniel
@@ -16,6 +19,7 @@ public class Topico {
     private String conteudo;
     private String login;
     private Usuario usuario;
+    private List<Comentario> comentarios = new ArrayList<>();
     
     public int getCodigo() {
         return codigo;
@@ -55,5 +59,13 @@ public class Topico {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+    
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<Comentario> comentario) {
+        this.comentarios = comentario;
     }
 }

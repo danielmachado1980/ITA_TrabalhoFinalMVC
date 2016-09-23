@@ -43,7 +43,14 @@ public class TopicosServlet extends HttpServlet {
         if(userPath.contains("Inserir")){
             request.getRequestDispatcher("/WEB-INF/view/insereTopico.jsp").forward(request, response);
         }else if(userPath.contains("Exibir")){
-            request.getRequestDispatcher("/WEB-INF/view/exibeTopico.jsp").forward(request, response);
+            try {
+                int topico = Integer.parseInt(request.getParameter("topico"));
+                TopicoDAO dao = new TopicoDAO();
+                request.setAttribute("topico", dao.recuperar(topico));
+                request.getRequestDispatcher("/WEB-INF/view/exibeTopico.jsp").forward(request, response);
+            } catch (Exception ex) {
+                Logger.getLogger(TopicosServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }else{
             TopicoDAO dao = new TopicoDAO();
             try {

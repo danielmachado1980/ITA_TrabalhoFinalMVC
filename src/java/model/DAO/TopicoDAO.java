@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import model.Comentario;
 import model.Topico;
 
 /**
@@ -51,4 +52,27 @@ public class TopicoDAO extends BaseDAO {
 		}
                 return lstTopicos;
 	}
+
+        public Topico recuperar(int codigo) throws Exception {
+                Topico topico = new Topico();
+                String sql = "SELECT * FROM topico WHERE id_topico = ?";
+                try {
+			PreparedStatement stm = connection.prepareStatement(sql);
+                        stm.setInt(1, codigo);
+			ResultSet rs = stm.executeQuery();
+			while(rs.next()){
+				ComentarioDAO comentarioDAO = new ComentarioDAO();
+                                UsuarioDAOImpl usuarioDAO = new UsuarioDAOImpl();
+                                topico.setCodigo(rs.getInt("id_topico"));
+				topico.setLogin(rs.getString("login"));
+				topico.setTitulo(rs.getString("titulo"));
+                                topico.setConteudo(rs.getString("conteudo"));
+                                topico.setUsuario(usuarioDAO.recuperar(topico.getLogin()));
+                                topico.setComentarios(comentarioDAO.listarPorTopico(codigo));        //comentarioDAO.listarPorTopico(topico.getCodigo()));
+			}
+		} catch (Exception e) {
+			throw new Exception("Erro ao tentar exibir tópico",e);
+		}
+                return topico;
+        }
 }
