@@ -19,13 +19,19 @@ import model.DAO.UsuarioDAOImpl;
  *
  * @author Daniel
  */
-@WebServlet(urlPatterns = {"/Login"})
+@WebServlet(urlPatterns = {""})
 public class LoginServlet extends HttpServlet {
 
     @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
+    }
+    
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Usuario usuario = new Usuario();
+        Usuario usuario;
         
         String senha = request.getParameter("senha");
         String login = request.getParameter("login");
@@ -33,9 +39,15 @@ public class LoginServlet extends HttpServlet {
         UsuarioDAOImpl usuarioDAO = new UsuarioDAOImpl();
         usuario = usuarioDAO.recuperar(login);
         
-        if(usuario.getSenha().equals(senha))
+        if(usuario.getLogin() == null){
+            request.setAttribute("erro", "Usuário não encontrado.");
+            request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
+        }else if(!usuario.getSenha().equals(senha)){
+            request.setAttribute("erro", "Login/Senha incorretos. Tente novamente.");
+            request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
+        }else{
+            request.getSession().setAttribute("usuario",usuario);
             response.sendRedirect(request.getContextPath() + "/Topicos");
-        else
-            response.sendRedirect(request.getContextPath() + "/");
+        }
     }
 }

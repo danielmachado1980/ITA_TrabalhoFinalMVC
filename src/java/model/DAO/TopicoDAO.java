@@ -7,11 +7,9 @@ package model.DAO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.Topico;
-import model.Usuario;
 
 /**
  *
@@ -19,7 +17,7 @@ import model.Usuario;
  */
 public class TopicoDAO extends BaseDAO {
     
-	public void inserir(Topico topico) {
+	public void inserir(Topico topico) throws Exception {
 		String sql = "INSERT INTO topico(titulo, conteudo, login) VALUES (?, ?, ?)";
 		try {
 			PreparedStatement stm = connection.prepareStatement(sql);
@@ -27,13 +25,12 @@ public class TopicoDAO extends BaseDAO {
 			stm.setString(2, topico.getConteudo());
 			stm.setString(3, topico.getLogin());
 			stm.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			throw new Exception("Erro ao tentar inserir tópico",e);
 		}
 	}
         
-        public List<Topico> listar(String login) {
+        public List<Topico> listar(String login) throws Exception {
 		String sql = "SELECT * FROM topico WHERE login = ?";
                 List<Topico> lstTopicos = new ArrayList<>();
 		try {
@@ -51,9 +48,8 @@ public class TopicoDAO extends BaseDAO {
 				lstTopicos.add(topico);
 			}
 			stm.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			throw new Exception("Erro ao tentar listar tópicos",e);
 		}
                 return lstTopicos;
 	}

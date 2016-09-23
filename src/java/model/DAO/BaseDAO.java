@@ -8,6 +8,8 @@ package model.DAO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -21,34 +23,19 @@ public class BaseDAO {
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
-            System.out.println("Onde está seu PostgreSQL JDBC Driver? "
-                    + "Inclua-o ao Build Path!");
-            e.printStackTrace();
+            Logger.getLogger(BaseDAO.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
     public BaseDAO() {
         connection = null;
-        System.out.println("-------- PostgreSQL "
-                + "JDBC Teste de Conexão ------------");
-
-        System.out.println("PostgreSQL JDBC Driver Registrado!");
-
         try {
             connection = DriverManager.getConnection(
                     "jdbc:postgresql://127.0.0.1:5432/coursera", "postgres",
                     "dan");
 
-        } catch (SQLException e) {
-            System.out.println("Conexão falhou! Verifique a saída no console");
-            e.printStackTrace();
-            return;
-        }
-
-        if (connection != null) {
-            System.out.println("Tudo pronto para trabalhar!");
-        } else {
-            System.out.println("Falha ao tentar conexão!");
+        } catch (Exception e) {
+            Logger.getLogger(BaseDAO.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 }

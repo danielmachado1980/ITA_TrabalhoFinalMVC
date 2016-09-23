@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Usuario;
 
 /**
@@ -22,20 +24,19 @@ public class UsuarioDAOImpl extends BaseDAO implements UsuarioDAO {
 		
 	@Override
 	public void inserir(Usuario u) {
-		String sql = "INSERT INTO usuario(login, email, nome, senha, pontos) VALUES (?, ?, ?, ?, ?)";
-		try {
-			PreparedStatement stm = connection.prepareStatement(sql);
-			stm.setString(1, u.getLogin());
-			stm.setString(2, u.getEmail());
-			stm.setString(3, u.getNome());
-			stm.setString(4, u.getSenha());
-			stm.setInt(5, u.getPontos());
-			stm.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+                String sql = "INSERT INTO usuario(login, email, nome, senha, pontos) VALUES (?, ?, ?, ?, ?)";
+                try {
+                PreparedStatement stm = connection.prepareStatement(sql);
+                stm.setString(1, u.getLogin());
+                stm.setString(2, u.getEmail());
+                stm.setString(3, u.getNome());
+                stm.setString(4, u.getSenha());
+                stm.setInt(5, u.getPontos());
+                stm.executeUpdate();
+            } catch (SQLException ex) {
+                Logger.getLogger(UsuarioDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
 
 	@Override
 	public Usuario recuperar(String login) {
@@ -51,9 +52,8 @@ public class UsuarioDAOImpl extends BaseDAO implements UsuarioDAO {
 			usuario.setEmail(rs.getString("email"));
 			usuario.setSenha(rs.getString("senha"));
 			usuario.setPontos(rs.getInt("pontos"));
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (SQLException ex) {
+			Logger.getLogger(UsuarioDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
 		}
 		return usuario;
 	}
@@ -66,9 +66,8 @@ public class UsuarioDAOImpl extends BaseDAO implements UsuarioDAO {
 			stm.setInt(1, pontos);
 			stm.setString(2, login);
 			stm.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (SQLException ex) {
+			Logger.getLogger(UsuarioDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
 		
@@ -89,9 +88,8 @@ public class UsuarioDAOImpl extends BaseDAO implements UsuarioDAO {
                                 usuario.setColocacao(rs.getInt("colocacao"));
 				lstUsuarios.add(usuario);
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (SQLException ex) {
+			Logger.getLogger(UsuarioDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
 		}
 		return lstUsuarios;
 	}

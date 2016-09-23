@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.DAO.TopicoDAO;
 import model.Topico;
+import model.Usuario;
 
 /**
  *
@@ -43,7 +44,7 @@ public class TopicosServlet extends HttpServlet {
             request.getRequestDispatcher("/WEB-INF/view/exibeTopico.jsp").forward(request, response);
         }else{
             TopicoDAO dao = new TopicoDAO();
-            request.setAttribute("topicos", dao.listar("daniel"));
+            request.setAttribute("topicos", dao.listar(((Usuario) request.getSession().getAttribute("usuario")).getLogin()));
             request.getRequestDispatcher("/WEB-INF/view/topicos.jsp").forward(request, response);
         }
     }
@@ -67,7 +68,7 @@ public class TopicosServlet extends HttpServlet {
             String conteudo = request.getParameter("conteudo");
             topico.setTitulo(titulo);
             topico.setConteudo(conteudo);
-            topico.setLogin("daniel");
+            topico.setLogin(((Usuario) request.getSession().getAttribute("usuario")).getLogin());
             
             TopicoDAO dao = new TopicoDAO();
             dao.inserir(topico);

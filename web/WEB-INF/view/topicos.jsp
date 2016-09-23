@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page session="true"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,6 +21,9 @@
                     <a href="${pageContext.request.contextPath}" class="navbar-brand">Fórum com Gamification</a>
                 </div>
                 <div class="navbar-collapse collapse" id="navbar-main">
+                    <ul class="nav nav-pills navbar-right">
+                        <li class="active"><a href="#">${usuario.getNome()}</a></li>
+                    </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="Ranking">Ranking</a></li>
                         <li><a href="Topicos/Inserir">Inserir Tópico</a></li>

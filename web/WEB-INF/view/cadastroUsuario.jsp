@@ -3,8 +3,6 @@
     Created on : 20/09/2016, 15:21:54
     Author     : Daniel
 --%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,7 +18,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="page-header">
-                            <h1 id="forms">Cadastro de Usu√°rio</h1>
+                            <h1 id="forms">Cadastro de Usu·rio</h1>
                         </div>
                     </div>
                 </div>

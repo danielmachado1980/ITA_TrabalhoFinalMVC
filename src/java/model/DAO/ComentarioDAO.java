@@ -9,6 +9,6 @@ package model.DAO;
  *
  * @author daniel
  */
-public class ComentarioDAO {
+public class ComentarioDAO extends BaseDAO {
     
 }

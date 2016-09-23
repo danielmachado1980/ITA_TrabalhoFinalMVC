@@ -45,7 +45,6 @@ public class CadastroServlet extends HttpServlet {
         UsuarioDAOImpl usuarioDAO = new UsuarioDAOImpl();
         usuarioDAO.inserir(usuario);
         response.sendRedirect(request.getContextPath() + "/");
-        //response.sendRedirect(request.getContextPath() + "/Topicos");
     }
 
 }

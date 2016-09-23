@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html >
     <head>
@@ -21,7 +22,13 @@
         </div>
         <div class="container">
 
-            <form class="form-signin" action="Login" method="POST">
+            <form class="form-signin" method="POST">
+                <c:if test="${not empty erro}">
+                    <div class="alert alert-dismissible alert-danger">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong><c:out value="${erro}"/></strong>
+                    </div>
+                </c:if>
                 <h2 class="form-signin-heading">Autenticação</h2>
                 <label for="inputLogin" class="sr-only">Login</label>
                 <input type="text" id="inputLogin" name="login" class="form-control" placeholder="Entre com o login" required autofocus>
