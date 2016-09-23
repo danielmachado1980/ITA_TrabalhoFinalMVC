@@ -7,6 +7,8 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,7 +46,11 @@ public class TopicosServlet extends HttpServlet {
             request.getRequestDispatcher("/WEB-INF/view/exibeTopico.jsp").forward(request, response);
         }else{
             TopicoDAO dao = new TopicoDAO();
-            request.setAttribute("topicos", dao.listar(((Usuario) request.getSession().getAttribute("usuario")).getLogin()));
+            try {
+                request.setAttribute("topicos", dao.listar());
+            } catch (Exception ex) {
+                Logger.getLogger(TopicosServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
             request.getRequestDispatcher("/WEB-INF/view/topicos.jsp").forward(request, response);
         }
     }
@@ -71,7 +77,11 @@ public class TopicosServlet extends HttpServlet {
             topico.setLogin(((Usuario) request.getSession().getAttribute("usuario")).getLogin());
             
             TopicoDAO dao = new TopicoDAO();
-            dao.inserir(topico);
+            try {
+                dao.inserir(topico);
+            } catch (Exception ex) {
+                Logger.getLogger(TopicosServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
             response.sendRedirect(request.getContextPath() + "/Topicos");
         }else if(userPath.contains("Exibir")){
             request.getRequestDispatcher("/WEB-INF/view/exibeTopico.jsp").forward(request, response);

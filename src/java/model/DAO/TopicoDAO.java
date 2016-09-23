@@ -30,12 +30,11 @@ public class TopicoDAO extends BaseDAO {
 		}
 	}
         
-        public List<Topico> listar(String login) throws Exception {
-		String sql = "SELECT * FROM topico WHERE login = ?";
+        public List<Topico> listar() throws Exception {
+		String sql = "SELECT * FROM topico";
                 List<Topico> lstTopicos = new ArrayList<>();
 		try {
 			PreparedStatement stm = connection.prepareStatement(sql);
-			stm.setString(1, login);
 			ResultSet rs = stm.executeQuery();
 			while(rs.next()){
 				Topico topico = new Topico();
@@ -47,7 +46,6 @@ public class TopicoDAO extends BaseDAO {
                                 topico.setUsuario(dao.recuperar(topico.getLogin()));
 				lstTopicos.add(topico);
 			}
-			stm.executeUpdate();
 		} catch (Exception e) {
 			throw new Exception("Erro ao tentar listar tópicos",e);
 		}

@@ -54,8 +54,9 @@
                         <c:forEach var="topico" items="${topicos}">
                             <tr> 
                                 <td>${topico.getCodigo()}</td>
-                                <td>${topico.getTitulo()}</td>
+                                <td>${topico.getTitulo()} - ${topico.getUsuario().getNome()}</td>
                                 <td>${topico.getUsuario().getNome()}</td>
+                                <td><a href="/Topicos/Exibir?id=<c:out value="${topico.getCodigo()}"/>">Exibir</a></td>
                             </tr>
                         </c:forEach>
 
