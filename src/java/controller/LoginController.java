@@ -6,7 +6,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,33 +19,34 @@ import model.DAO.UsuarioDAOImpl;
  * @author Daniel
  */
 @WebServlet(urlPatterns = {""})
-public class LoginServlet extends HttpServlet {
+public class LoginController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
     }
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Usuario usuario;
-        
+        Usuario usuario = new Usuario();
         String senha = request.getParameter("senha");
         String login = request.getParameter("login");
-                
         UsuarioDAOImpl usuarioDAO = new UsuarioDAOImpl();
-        usuario = usuarioDAO.recuperar(login);
-        
-        if(usuario.getLogin() == null){
+        try {
+            usuario = usuarioDAO.recuperar(login);
+        } catch (Exception ex) {
+            request.setAttribute("erro", ex.getMessage());
+        }
+        if (usuario.getLogin() == null) {
             request.setAttribute("erro", "Usuário não encontrado.");
             request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
-        }else if(!usuario.getSenha().equals(senha)){
+        } else if (!usuario.getSenha().equals(senha)) {
             request.setAttribute("erro", "Login/Senha incorretos. Tente novamente.");
             request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
-        }else{
-            request.getSession().setAttribute("usuario",usuario);
+        } else {
+            request.getSession().setAttribute("usuario", usuario);
             response.sendRedirect(request.getContextPath() + "/Topicos");
         }
     }

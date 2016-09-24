@@ -19,14 +19,19 @@
             <div class="container">
                 <div class="navbar-header">
                     <a href="${pageContext.request.contextPath}" class="navbar-brand">Fórum com Gamification</a>
+                    <button data-target="#navbar-main" data-toggle="collapse" type="button" class="navbar-toggle">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                 </div>
                 <div class="navbar-collapse collapse" id="navbar-main">
                     <ul class="nav nav-pills navbar-right">
                         <li class="active"><a href="#">${usuario.getNome()}</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="Ranking">Ranking</a></li>
-                        <li><a href="Topicos/Inserir">Inserir Tópico</a></li>
+                        <li><a href="${pageContext.request.contextPath}/Ranking">Ranking</a></li>
+                        <li><a href="${pageContext.request.contextPath}/Topicos/Inserir">Inserir Tópico</a></li>
                     </ul>
                 </div>
             </div>
@@ -42,6 +47,12 @@
                 </div>
             </div>
             <div class="bs-component">
+                <c:if test="${not empty erro}">
+                    <div class="alert alert-dismissible alert-danger">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong><c:out value="${erro}"/></strong>
+                    </div>
+                </c:if>
                 <table class="table table-striped table-hover ">
                     <thead>
                         <tr>
@@ -59,7 +70,6 @@
                                 <td><a href="${pageContext.request.contextPath}/Topicos/Exibir?topico=<c:out value="${topico.getCodigo()}"/>">Exibir</a></td>
                             </tr>
                         </c:forEach>
-
                     </tbody>
                 </table> 
             </div>

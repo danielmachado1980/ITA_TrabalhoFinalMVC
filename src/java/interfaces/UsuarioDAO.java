@@ -14,11 +14,11 @@ import model.Usuario;
  */
 public interface UsuarioDAO {
 
-    public void inserir(Usuario u);
+    public void inserir(Usuario u) throws Exception;
 
-    public Usuario recuperar(String login);
+    public Usuario recuperar(String login) throws Exception;
 
-    public void adicionarPontos(String login, int pontos);
+    public void adicionarPontos(String login, int pontos) throws Exception;
 
-    public List<Usuario> ranking();
+    public List<Usuario> ranking() throws Exception;
 }

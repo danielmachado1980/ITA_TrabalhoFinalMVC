@@ -57,7 +57,7 @@ public class Usuario {
     public void setPontos(int pontos) {
         this.pontos = pontos;
     }
-    
+
     public int getColocacao() {
         return colocacao;
     }
@@ -65,7 +65,7 @@ public class Usuario {
     public void setColocacao(int colocacao) {
         this.colocacao = colocacao;
     }
-    
+
     @Override
     public String toString() {
         return "Usuario [_login=" + login + "]";

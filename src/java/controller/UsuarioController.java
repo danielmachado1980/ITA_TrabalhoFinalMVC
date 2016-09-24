@@ -6,7 +6,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +19,7 @@ import model.DAO.UsuarioDAOImpl;
  * @author Daniel
  */
 @WebServlet(urlPatterns = {"/Cadastrar"})
-public class CadastroServlet extends HttpServlet {
+public class UsuarioController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -32,7 +31,6 @@ public class CadastroServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Usuario usuario = new Usuario();
-        
         String nome = request.getParameter("nome");
         String senha = request.getParameter("senha");
         String login = request.getParameter("login");
@@ -41,10 +39,14 @@ public class CadastroServlet extends HttpServlet {
         usuario.setLogin(login);
         usuario.setNome(nome);
         usuario.setSenha(senha);
-        
         UsuarioDAOImpl usuarioDAO = new UsuarioDAOImpl();
-        usuarioDAO.inserir(usuario);
-        response.sendRedirect(request.getContextPath() + "/");
+        try {
+            usuarioDAO.inserir(usuario);
+            response.sendRedirect(request.getContextPath() + "/");
+        } catch (Exception ex) {
+            request.setAttribute("erro", ex.getMessage());
+            request.getRequestDispatcher("/WEB-INF/view/cadastroUsuario.jsp").forward(request, response);
+        }
     }
 
 }

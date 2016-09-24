@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page session="true"%>
 <!DOCTYPE html>
 <html >
     <head>
@@ -12,16 +13,20 @@
             <div class="container">
                 <div class="navbar-header">
                     <a href="${pageContext.request.contextPath}" class="navbar-brand">Fórum com Gamification</a>
+                    <button data-target="#navbar-main" data-toggle="collapse" type="button" class="navbar-toggle">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                 </div>
                 <div class="navbar-collapse collapse" id="navbar-main">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="Cadastrar">Cadastrar Usuário</a></li>
+                        <li><a href="${pageContext.request.contextPath}/Cadastrar">Cadastrar Usuário</a></li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="container">
-
             <form class="form-signin" method="POST">
                 <c:if test="${not empty erro}">
                     <div class="alert alert-dismissible alert-danger">
@@ -38,7 +43,7 @@
             </form>
 
         </div> <!-- /container -->
-         <!-- jQuery (necessario para os plugins Javascript do Bootstrap) -->
+        <!-- jQuery (necessario para os plugins Javascript do Bootstrap) -->
         <script src="${pageContext.request.contextPath}/js/jquery-3.1.0.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     </body>

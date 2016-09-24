@@ -18,10 +18,15 @@
             <div class="container">
                 <div class="navbar-header">
                     <a href="${pageContext.request.contextPath}" class="navbar-brand">Fórum com Gamification</a>
+                    <button data-target="#navbar-main" data-toggle="collapse" type="button" class="navbar-toggle">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                 </div>
                 <div class="navbar-collapse collapse" id="navbar-main">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="Topicos">Tópicos</a></li>
+                        <li><a href="${pageContext.request.contextPath}/Topicos">Tópicos</a></li>
                     </ul>
                 </div>
             </div>

@@ -10,7 +10,7 @@ package model;
  * @author daniel
  */
 public class Comentario {
-    
+
     private int codigo;
     private String comentario;
     private String login;
@@ -48,7 +48,7 @@ public class Comentario {
     public void setIdTopico(int idTopico) {
         this.idTopico = idTopico;
     }
-    
+
     public Usuario getUsuario() {
         return usuario;
     }

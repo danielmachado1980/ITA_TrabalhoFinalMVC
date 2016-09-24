@@ -1,0 +1,33 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package model.BO;
+
+import model.Comentario;
+import model.DAO.BaseDAO;
+import model.DAO.ComentarioDAO;
+import model.DAO.UsuarioDAOImpl;
+
+/**
+ *
+ * @author Daniel
+ */
+public class ComentarioBO {
+    
+    public static void inserir(Comentario comentario) throws Exception{
+        ComentarioDAO dao = new ComentarioDAO();
+        try {
+            dao.getConnection().setAutoCommit(false);
+            dao.inserir(comentario);
+            UsuarioDAOImpl usuDAO = new UsuarioDAOImpl();
+            usuDAO.adicionarPontos(comentario.getLogin(), 3);
+            dao.getConnection().commit();
+        } catch (Exception ex) {
+            dao.getConnection().rollback();
+            throw new Exception(ex.getMessage(),ex);
+        }
+    }
+    
+}

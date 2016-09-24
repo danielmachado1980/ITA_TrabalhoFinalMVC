@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%-- 
     Document   : cadastroUsuario
     Created on : 20/09/2016, 15:21:54
@@ -26,6 +27,12 @@
                     <div class="col-lg-6">
                         <div class="well bs-component">
                             <form class="form-horizontal" action="Cadastrar" method="POST">
+                                <c:if test="${not empty erro}">
+                                    <div class="alert alert-dismissible alert-danger">
+                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        <strong><c:out value="${erro}"/></strong>
+                                    </div>
+                                </c:if>
                                 <fieldset>
                                     <legend></legend>
                                     <div class="form-group">
@@ -66,7 +73,7 @@
 
                 </div>
             </div>
-        <script src="${pageContext.request.contextPath}/js/jquery-3.1.0.min.js"></script>
-        <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+            <script src="${pageContext.request.contextPath}/js/jquery-3.1.0.min.js"></script>
+            <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     </body>
 </html>

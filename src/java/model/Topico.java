@@ -13,22 +13,22 @@ import java.util.List;
  * @author daniel
  */
 public class Topico {
-    
+
     private int codigo;
     private String titulo;
     private String conteudo;
     private String login;
     private Usuario usuario;
     private List<Comentario> comentarios = new ArrayList<>();
-    
+
     public int getCodigo() {
         return codigo;
     }
-    
+
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
-    
+
     public String getTitulo() {
         return titulo;
     }
@@ -52,7 +52,7 @@ public class Topico {
     public void setLogin(String login) {
         this.login = login;
     }
-    
+
     public Usuario getUsuario() {
         return usuario;
     }
@@ -60,7 +60,7 @@ public class Topico {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    
+
     public List<Comentario> getComentarios() {
         return comentarios;
     }

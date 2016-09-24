@@ -7,7 +7,6 @@ package model.DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,7 +16,15 @@ import java.util.logging.Logger;
  */
 public class BaseDAO {
 
-    protected Connection connection;
+    private Connection connection;
+
+    public Connection getConnection() {
+        return connection;
+    }
+
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
 
     static {
         try {
@@ -26,7 +33,7 @@ public class BaseDAO {
             Logger.getLogger(BaseDAO.class.getName()).log(Level.SEVERE, null, e);
         }
     }
-
+        
     public BaseDAO() {
         connection = null;
         try {
