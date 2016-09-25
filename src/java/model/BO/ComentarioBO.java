@@ -22,6 +22,7 @@ public class ComentarioBO {
             dao.getConnection().setAutoCommit(false);
             dao.inserir(comentario);
             UsuarioDAOImpl usuDAO = new UsuarioDAOImpl();
+            usuDAO.setConnection(dao.getConnection());
             usuDAO.adicionarPontos(comentario.getLogin(), 3);
             dao.getConnection().commit();
         } catch (Exception ex) {
@@ -30,4 +31,13 @@ public class ComentarioBO {
         }
     }
     
+    public static void deletar(String login) throws Exception {
+       ComentarioDAO dao = new ComentarioDAO();
+       dao.deletar(login);
+    }
+
+    public static void deletar() throws Exception {
+        ComentarioDAO dao = new ComentarioDAO();
+        dao.deletar();
+    }
 }

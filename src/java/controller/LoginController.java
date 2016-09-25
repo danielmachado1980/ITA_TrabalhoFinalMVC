@@ -11,8 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.BO.UsuarioBO;
 import model.Usuario;
-import model.DAO.UsuarioDAOImpl;
 
 /**
  *
@@ -33,9 +33,8 @@ public class LoginController extends HttpServlet {
         Usuario usuario = new Usuario();
         String senha = request.getParameter("senha");
         String login = request.getParameter("login");
-        UsuarioDAOImpl usuarioDAO = new UsuarioDAOImpl();
         try {
-            usuario = usuarioDAO.recuperar(login);
+            usuario = UsuarioBO.recuperar(login);
         } catch (Exception ex) {
             request.setAttribute("erro", ex.getMessage());
         }

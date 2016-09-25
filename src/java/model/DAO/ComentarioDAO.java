@@ -52,4 +52,25 @@ public class ComentarioDAO extends BaseDAO {
         }
         return lstComentarios;
     }
+    
+    public void deletar(String login) throws Exception {
+        String sql = "DELETE FROM comentario WHERE login = ?";
+        try {
+            PreparedStatement stm = getConnection().prepareStatement(sql);
+            stm.setString(1, login);
+            stm.executeUpdate();
+        } catch (Exception e) {
+            throw new Exception("Erro ao tentar excluir o(s) comentário(s)", e);
+        }
+    }
+
+    public void deletar() throws Exception {
+        String sql = "DELETE FROM comentario";
+        try {
+            PreparedStatement stm = getConnection().prepareStatement(sql);
+            stm.executeUpdate();
+        } catch (Exception e) {
+            throw new Exception("Erro ao tentar excluir o(s) comentário(s)", e);
+        }
+    }
 }

@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.BO.TopicoBO;
-import model.DAO.TopicoDAO;
 import model.Topico;
 import model.Usuario;
 
@@ -21,8 +20,8 @@ import model.Usuario;
  * @author Daniel
  */
 @WebServlet(urlPatterns = {"/Topicos",
-                           "/Topicos/Inserir",
-                           "/Topicos/Exibir"})
+    "/Topicos/Inserir",
+    "/Topicos/Exibir"})
 public class TopicoController extends HttpServlet {
 
     @Override
@@ -34,17 +33,15 @@ public class TopicoController extends HttpServlet {
         } else if (userPath.contains("Exibir")) {
             try {
                 int topico = Integer.parseInt(request.getParameter("topico"));
-                TopicoDAO dao = new TopicoDAO();
-                request.setAttribute("topico", dao.recuperar(topico));
+                request.setAttribute("topico", TopicoBO.recuperar(topico));
                 request.getRequestDispatcher("/WEB-INF/view/exibeTopico.jsp").forward(request, response);
             } catch (Exception ex) {
                 request.setAttribute("erro", ex.getMessage());
                 request.getRequestDispatcher("/WEB-INF/view/topicos.jsp").forward(request, response);
             }
         } else {
-            TopicoDAO dao = new TopicoDAO();
             try {
-                request.setAttribute("topicos", dao.listar());
+                request.setAttribute("topicos", TopicoBO.listar());
             } catch (Exception ex) {
                 request.setAttribute("erro", ex.getMessage());
             }
@@ -72,5 +69,4 @@ public class TopicoController extends HttpServlet {
             }
         }
     }
-
 }

@@ -90,4 +90,25 @@ public class UsuarioDAOImpl extends BaseDAO implements UsuarioDAO {
         }
         return lstUsuarios;
     }
+
+    public void deletar(String login) throws Exception {
+        String sql = "DELETE FROM usuario WHERE login = ?";
+        try {
+            PreparedStatement stm = getConnection().prepareStatement(sql);
+            stm.setString(1, login);
+            stm.executeUpdate();
+        } catch (Exception e) {
+            throw new Exception("Erro ao tentar excluir o usuário", e);
+        }
+    }
+    
+    public void deletar() throws Exception {
+        String sql = "DELETE FROM usuario";
+        try {
+            PreparedStatement stm = getConnection().prepareStatement(sql);
+            stm.executeUpdate();
+        } catch (Exception e) {
+            throw new Exception("Erro ao tentar excluir o(s) usuário(s)", e);
+        }
+    }
 }

@@ -11,8 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.BO.UsuarioBO;
 import model.Usuario;
-import model.DAO.UsuarioDAOImpl;
 
 /**
  *
@@ -39,14 +39,12 @@ public class UsuarioController extends HttpServlet {
         usuario.setLogin(login);
         usuario.setNome(nome);
         usuario.setSenha(senha);
-        UsuarioDAOImpl usuarioDAO = new UsuarioDAOImpl();
         try {
-            usuarioDAO.inserir(usuario);
+            UsuarioBO.inserir(usuario);
             response.sendRedirect(request.getContextPath() + "/");
         } catch (Exception ex) {
             request.setAttribute("erro", ex.getMessage());
             request.getRequestDispatcher("/WEB-INF/view/cadastroUsuario.jsp").forward(request, response);
         }
     }
-
 }

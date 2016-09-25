@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.BO.ComentarioBO;
 import model.Comentario;
-import model.DAO.ComentarioDAO;
 import model.Usuario;
 
 /**

@@ -5,9 +5,7 @@
  */
 package model.BO;
 
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.List;
 import model.DAO.TopicoDAO;
 import model.DAO.UsuarioDAOImpl;
 import model.Topico;
@@ -29,7 +27,27 @@ public class TopicoBO {
             dao.getConnection().commit();
         } catch (Exception ex) {
             dao.getConnection().rollback();
-            throw new Exception(ex.getMessage(),ex);
+            throw new Exception(ex.getMessage(), ex);
         }
+    }
+
+    public static List<Topico> listar() throws Exception {
+        TopicoDAO dao = new TopicoDAO();
+        return dao.listar();
+    }
+
+    public static Topico recuperar(int codigo) throws Exception {
+        TopicoDAO dao = new TopicoDAO();
+        return dao.recuperar(codigo);
+    }
+    
+    public static void deletar(String login) throws Exception {
+       TopicoDAO dao = new TopicoDAO();
+       dao.deletar(login);
+    }
+
+    public static void deletar() throws Exception {
+        TopicoDAO dao = new TopicoDAO();
+        dao.deletar();
     }
 }

@@ -74,4 +74,25 @@ public class TopicoDAO extends BaseDAO {
         }
         return topico;
     }
+    
+    public void deletar(String login) throws Exception {
+        String sql = "DELETE FROM topico WHERE login = ?";
+        try {
+            PreparedStatement stm = getConnection().prepareStatement(sql);
+            stm.setString(1, login);
+            stm.executeUpdate();
+        } catch (Exception e) {
+            throw new Exception("Erro ao tentar excluir o(s) tópico(s)", e);
+        }
+    }
+
+    public void deletar() throws Exception {
+        String sql = "DELETE FROM topico";
+        try {
+            PreparedStatement stm = getConnection().prepareStatement(sql);
+            stm.executeUpdate();
+        } catch (Exception e) {
+            throw new Exception("Erro ao tentar excluir o(s) tópico(s)", e);
+        }
+    }
 }

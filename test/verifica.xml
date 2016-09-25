@@ -1,0 +1,6 @@
+<<dataset>
+<USUARIO LOGIN="duda" NOME="MARIA EDUARDA GUERRA" EMAIL="duda@mail.com" SENHA="duda123" PONTOS="45"/>
+<USUARIO LOGIN="duda2" NOME="MARIA EDUARDA GUERRA2" EMAIL="duda2@mail.com" SENHA="duda1234" PONTOS="45"/>
+<USUARIO LOGIN="joao" NOME="JOAO BATISTA MACHADO" EMAIL="joao@mail.com" SENHA="jao" PONTOS="20"/>
+<USUARIO LOGIN="lidia" NOME="LIDIA GONCALVES MACHADO" EMAIL="lidia@mail.com" SENHA="lidia" PONTOS="50"/>
+</dataset>
