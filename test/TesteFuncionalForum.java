@@ -1,10 +1,8 @@
 
-import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
 import model.BO.ComentarioBO;
 import model.BO.TopicoBO;
 import model.BO.UsuarioBO;
-import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
 import org.testng.annotations.*;
@@ -46,7 +44,7 @@ public class TesteFuncionalForum {
         driver.findElement(By.name("senha")).sendKeys("123");
         driver.findElement(By.cssSelector("button.btn.btn-primary")).click();
         driver.findElement(By.id("inputLogin")).clear();
-        driver.findElement(By.id("inputLogin")).sendKeys("joao");
+        driver.findElement(By.id("inputLogin")).sendKeys("teste");
         driver.findElement(By.id("inputPassword")).clear();
         driver.findElement(By.id("inputPassword")).sendKeys("123");
         driver.findElement(By.xpath("//button[@type='submit']")).click();

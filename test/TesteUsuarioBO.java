@@ -3,8 +3,6 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import model.BO.ComentarioBO;
-import model.BO.TopicoBO;
 import model.BO.UsuarioBO;
 
 import org.dbunit.Assertion;
@@ -26,9 +24,6 @@ public class TesteUsuarioBO {
         jdt = new JdbcDatabaseTester("org.postgresql.Driver", "jdbc:postgresql://127.0.0.1:5432/coursera", "postgres",
                 "dan");
         FlatXmlDataFileLoader loader = new FlatXmlDataFileLoader();
-        ComentarioBO.deletar();
-        TopicoBO.deletar();
-        UsuarioBO.deletar();
         jdt.setDataSet(loader.load("/inicio.xml"));
         jdt.onSetup();
     }
@@ -86,7 +81,5 @@ public class TesteUsuarioBO {
         IDataSet expectedDataset = loader.load("/verifica.xml");
         ITable expectedTable = expectedDataset.getTable("USUARIO");
         Assertion.assertEquals(expectedTable, currentTable);
-        //Assertion.assertEqualsIgnoreCols(expectedTable, currentTable, new String[]{"id_topico"});
     }
-
 }

@@ -5,6 +5,7 @@
  */
 package model.BO;
 
+import java.util.List;
 import model.Comentario;
 import model.DAO.BaseDAO;
 import model.DAO.ComentarioDAO;
@@ -29,6 +30,11 @@ public class ComentarioBO {
             dao.getConnection().rollback();
             throw new Exception(ex.getMessage(),ex);
         }
+    }
+    
+    public static List<Comentario> listarPorTopico(int codigo) throws Exception {
+       ComentarioDAO dao = new ComentarioDAO();
+       return dao.listarPorTopico(codigo);
     }
     
     public static void deletar(String login) throws Exception {
